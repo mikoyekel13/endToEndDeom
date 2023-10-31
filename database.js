@@ -59,10 +59,10 @@ function getWholeArr (str) {
         case 'shoes':
             const loaclShoes = JSON.parse(localStorage.getItem('shoes'));
 
-            return loaclShoes.shoes;
+            return loaclShoes;
         case 'users':
             const loaclusers = JSON.parse(localStorage.getItem('users'));
-            return loaclusers.users;
+            return loaclusers;
     }
     return 404;
 } 
