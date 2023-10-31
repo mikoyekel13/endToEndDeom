@@ -2,7 +2,7 @@ const submitbtn = document.querySelector("#submitbtn");
 function checkValid() {
   const pwrd = document.getElementById("pwrd");
   const userName = document.getElementById("userName");
-  const users = JSON.parse(localStorage.getItem("database"));
+  const users = JSON.parse(localStorage.getItem("users"));
   const loginForm = document.getElementById("login");
   function checkValidUP(event) {
     event.preventDefault();
