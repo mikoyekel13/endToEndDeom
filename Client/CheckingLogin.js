@@ -6,9 +6,9 @@ function checkValid() {
   const loginForm = document.getElementById("login");
   function checkValidUP(event) {
     event.preventDefault();
-    for (let i = 0; i < users.users.length; i++) {
-      const name = users.users[i].username;
-      const password = users.users[i].password;
+    for (let i = 0; i < users.length; i++) {
+      const name = users[i].username;
+      const password = users[i].password;
       if (name === userName.value && password === pwrd.value) {
         showContent(pages.appPage);
         return true;
