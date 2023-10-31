@@ -67,9 +67,17 @@ function getWholeArr (str) {
     return 404;
 } 
 
-function addItem(localItem,ItemPram) {
-    localItem = JSON.parse(localStorage.getItem(localItem));
-    for(let i = 0; i < localItem.length;i++){
-        localStorage.setItem(localItem,localItem[i].push(ItemPram))
+function addShoes(ItemPram) {
+    const checkKeys =['brand','type','color','size','laces' ]
+    currentArr = JSON.parse(localStorage.getItem('shoes'));
+    for (let item of Object.keys(ItemPram)){
+        if(checkKeys.includes(item)){
+            console.log('ok');
+        }
+        
     }
+    currentArr.push(ItemPram);
+    localStorage.setItem('shoes',JSON.stringify(currentArr));
+    return 200;
 }
+addShoes({brand: 'hi2'})
