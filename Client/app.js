@@ -4,10 +4,14 @@ function getAppContainer() {
 }
 
 function fillContainer(container) {
-    const currnetArr = JSON.parse(localStorage.getItem('shoes'));
+    const currnetArr = getWholeArr('shoes');
     console.log(currnetArr);
     for (let item of currnetArr) {
-        container.innerHTML += `<div>${item.name}</div>`
+        container.innerHTML += `<div class="items">${item.brand}
+        ${item.type}
+        ${item.color}
+        ${item.size}
+        ${item.laces}</div>`;
     }
 }
 
