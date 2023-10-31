@@ -74,7 +74,6 @@ function addShoes(ItemPram) {
         if(checkKeys.includes(item)){
             console.log('ok');
         }
-        
     }
     currentArr.push(ItemPram);
     localStorage.setItem('shoes',JSON.stringify(currentArr));
