@@ -51,7 +51,7 @@ const database = {
 }
 
 //upload to local storge
-localStorage.setItem('database', JSON.stringify(database));
+//localStorage.setItem('database', JSON.stringify(database));
 
 //database API
 //basic functions
