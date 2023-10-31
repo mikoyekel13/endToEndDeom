@@ -7,7 +7,8 @@ const pages = {
 //switch content function
 function showContent(page) {
     let currentPage = page.id;
-    history.pushState({name: page.id}, currentPage, `#${currentPage}`);
+    history.pushState({ name: page.id }, currentPage, `#${currentPage}`);
+    console.log(history.state);
     if (document.body.querySelector('div')) {
         document.body.removeChild(document.body.querySelector('div'));
     }

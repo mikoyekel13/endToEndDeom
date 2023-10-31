@@ -10,7 +10,7 @@ function checkValid() {
       const name = users.users[i].username;
       const password = users.users[i].password;
       if (name === userName.value && password === pwrd.value) {
-        console.log("niceee");
+        showContent(pages.appPage);
         return true;
       }
     }
