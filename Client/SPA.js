@@ -16,5 +16,5 @@ function showContent(page) {
 }
 
 //apply functions
-window.onload = showContent(pages.appPage);
+window.onload = showContent(pages.loginPage);
 window.onhashchange = function() {showContent(pages[history.state['name']])};

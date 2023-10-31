@@ -1,5 +1,5 @@
 //whole database
-const database = {
+const shoes = {
     //shoes database
     shoes: [
         {
@@ -34,24 +34,25 @@ const database = {
             size: 44,
             laces: false
         },
-    ],
-    //users database
-    users: [
-        {
-            id: 1,
-            username: 'miko2003',
-            password: 'Abcd1234'
-        },
-        {
-            id: 2,
-            username: 'yoad2005',
-            password: 'Abcd1234'
-        },
     ]
 }
-
+    //users database
+const users = {    
+    users: [
+    {
+        id: 1,
+        username: 'miko2003',
+        password: 'Abcd1234'
+    },
+    {
+        id: 2,
+        username: 'yoad2005',
+        password: 'Abcd1234'
+    },
+]}
 //upload to local storge
-localStorage.setItem('database', JSON.stringify(database));
+localStorage.setItem('shoes', JSON.stringify(shoes));
+localStorage.setItem('users', JSON.stringify(users));
 
 //database API
 //basic functions
