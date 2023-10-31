@@ -7,12 +7,14 @@ const pages = {
 //switch content function
 function showContent(page) {
     let currentPage = page.id;
-    history.pushState({ name: page.id }, currentPage, `#${currentPage}`);
-    console.log(history.state);
+    history.pushState({name: page.id}, currentPage, `#${currentPage}`);
     if (document.body.querySelector('div')) {
         document.body.removeChild(document.body.querySelector('div'));
     }
     document.body.appendChild(page.content.cloneNode(true));
+    if (page.id === 'appTemp') {
+        getAppContainer();
+    }
 }
 
 //apply functions
