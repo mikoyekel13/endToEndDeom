@@ -7,14 +7,30 @@
     margin: auto;
 
 }
+.style-form2{
+    margin: 20vh 0 0 0;
+    height: auto;
+}
 .style-form{
+    
     display: flex;
-    border: 1px solid red;
+    border: 1px solid rgb(0, 0, 0);
     width: 30vw;
-    justify-content: center;
+    justify-items: flex-start;
+    /* align-content: flex-start; */
     margin: auto;
     flex-direction: column;
+    padding: 20px;
+    box-shadow:inset 1px 1px 0px;
 }
+
+ #login input, #login labal {
+    margin: 10px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+ }
+
 input{
     padding: 0.5rem;
 }
@@ -30,14 +46,77 @@ main {
     gap: 2px;
     width: 100vw;
     height: fit-content;
+    margin-top: 5vw;
+
 }
 .items{
     height: 10vh;
-    border: 1px solid red;  
+    border: 1px solid rgb(0, 0, 0);  
+    padding: 1vw;
+    font-size: 1.2rem;
+    margin: 0.5vw;
+    width: 20vw;
 }
-
 #filterBar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+.itemsfilter{
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 0;
+    
+}
+
+#filterBtn{
+    border-radius: 0.3vw;
+
+}
+input[type=text] {
+    border: 2px solid rgb(57, 57, 57);
+    border-radius: 4px;
+}
+.addshoeBtnStyle{
+    padding: 1rem;
+    margin: auto 0 auto 10px;
+    height: 10vh;
+    background-color: rgb(244, 244, 244);
+}
+.addshoeBtnStyle {
+    background-color: #5e2727;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    margin: auto 0 auto 10px;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    -webkit-user-select: none;
+    width: 80%;
+    will-change: transform;
+  }
+
+  .addshoeBtnStyle:disabled {
+    pointer-events: none;
+  }
+  
+  .addshoeBtnStyle:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  .addshoeBtnStyle:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }

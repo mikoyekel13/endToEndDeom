@@ -14,12 +14,12 @@
         <form  class="style-form2" id="login">
             <div class="style-form">
                 <div class="pad">
-                    <label class="lable-style-login">Name:</label>
-                    <input type='text' autocomplete='username' id='userName' required />
+                    <label for="UN" class="lable-style-login">Name:</label>
+                    <input name="UN" type='text' value="yoad2005" autocomplete='username' id='userName' required />
                 </div>
                 <div class="pad">
-                    <label class="lable-style-login">Password:</label>
-                    <input type='password' autocomplete='new-password' id="pwrd" required />
+                    <label for="PW" class="lable-style-login">Password:</label>
+                    <input name="PW" type='password' value="123" autocomplete='new-password' id="pwrd" required />
                 </div>
                 <p id="validateLogin"></p>
                 <div class="pad">
@@ -33,17 +33,18 @@
     <div>
         <nav>
             <form id="filterBar">
-                <label for="brand">Brand:</label>
-                <input type="text" id="brand" name="brand">
-                <label for="type">Type:</label>
-                <input type="text" id="type" name="type">
-                <label for="size">Size:</label>
-                <input type="text" id="size" name="size">
-                <label for="color">Color:</label>
-                <input type="text" id="color" name="color">
-                <label for="laces">Laces:</label>
-                <input type="text" id="laces" name="laces">
-                <button type="button" id="filterBtn">Filter</button>
+                
+                <label class="itemsfilter" for="brand">Brand:</label>
+                <input class="itemsfilter"  type="text" id="brand" name="brand">
+                <label class="itemsfilter" for="type">Type:</label>
+                <input class="itemsfilter" type="text" id="type" name="type">
+                <label class="itemsfilter" for="size">Size:</label>
+                <input class="itemsfilter" type="text" id="size" name="size">
+                <label class="itemsfilter" for="color">Color:</label>
+                <input class="itemsfilter" type="text" id="color" name="color">
+                <label class="itemsfilter" for="laces">Laces:</label>
+                <input class="itemsfilter" type="text" id="laces" name="laces">
+                <button class="itemsfilter" type="button" id="filterBtn">Filter</button>
             </form>
         </nav>
         <main>
@@ -53,10 +54,11 @@
 
     <script src="../database.js"></script>
     <script src="./app.js"></script>
-    <script src="./SPA.js"></script>
-    <script src="./CheckingLogin.js"></script>
     <script src="../server.js"></script>
     <script src="./FAJAX.js"></script>
+    <script src="./SPA.js"></script>
+    <script src="./CheckingLogin.js"></script>
 </body>
 
 </html>
+

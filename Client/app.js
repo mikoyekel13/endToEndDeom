@@ -13,7 +13,7 @@ function fillContainer(container, arr) {
         ${item.laces}</div>`;
   }
   container.innerHTML +=
-    '<button type="button" id="addShoeBtn">Add New</button>';
+    '<button type="button" class="addshoeBtnStyle" id="addShoeBtn">Add New</button>';
   const addShoeBtn = document.querySelector("#addShoeBtn");
   addShoeBtn.addEventListener("click", fillAgain);
 }
