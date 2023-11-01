@@ -13,7 +13,7 @@ function showContent(page) {
     }
     document.body.appendChild(page.content.cloneNode(true));
     if (page.id === 'appTemp') {
-        getAppContainer();
+        const gridContainer = getAppContainer();
     }
 }
 

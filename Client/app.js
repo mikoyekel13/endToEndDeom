@@ -1,9 +1,9 @@
 function getAppContainer() {
     const container = document.querySelector('main');
-    fillContainer(container);
+    return container;
 }
 
-function fillContainer(container) {
+function fillContainer(container, arr) {
     const currnetArr = getWholeArr('shoes');
     console.log(currnetArr);
     for (let item of currnetArr) {
