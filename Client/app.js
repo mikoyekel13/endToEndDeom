@@ -5,7 +5,6 @@ function getAppContainer() {
 
 function fillContainer(container, arr) {
     const currnetArr = getWholeArr('shoes');
-    console.log(currnetArr);
     for (let item of currnetArr) {
         container.innerHTML += `<div class="items">${item.brand}
         ${item.type}

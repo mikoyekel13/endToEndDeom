@@ -38,10 +38,6 @@ class FakeXMLHttpRequest{
     }
 
 }
-const fajax = new FakeXMLHttpRequest();
-fajax.open('GET', 'shoes');
-// fajax.onload = function(){
-// 
+
 // }
 //
-console.log(fajax.send());
