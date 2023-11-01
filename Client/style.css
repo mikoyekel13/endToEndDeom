@@ -120,3 +120,22 @@ input[type=text] {
     box-shadow: none;
     transform: translateY(0);
   }
+  #addItemform{
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    
+  }
+  .itemsnew{
+    margin: 5px;
+    font-size: 1.2rem;
+
+  }
+  .center{
+    background-color: rgb(3, 35, 35);
+    align-items: center;
+    margin: 3% auto auto auto;
+    
+  }

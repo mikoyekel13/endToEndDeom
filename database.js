@@ -32,7 +32,7 @@ class user {
     }
 }
 
-//whole database
+// // whole database
 const shoes = [
     //shoes database
     new shoe('Nike', 'Sport', 'Black', 42, true),
