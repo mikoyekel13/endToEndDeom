@@ -1,5 +1,5 @@
-localStorage.setItem('usersIdCounter', 1);
-localStorage.setItem('shoesIdCounter', 1);
+// localStorage.setItem('usersIdCounter', 1);
+// localStorage.setItem('shoesIdCounter', 1);
 
 class shoe {
     constructor(brand, type, color, size, laces) {
@@ -33,22 +33,22 @@ class user {
 }
 
 // // whole database
-const shoes = [
-    //shoes database
-    new shoe('Nike', 'Sport', 'Black', 42, true),
-    new shoe('Adidas', 'Streetwear', 'Black', 44, true),
-    new shoe('Blundstone', 'Boots', 'Brown', 39, false),
-    new shoe('Nike', 'Streetwear', 'White', 44, false)
-]
-//users database
-const users =
-    [
-        new user('miko2003', '123'),
-        new user('yoad2005', '123')
-    ]
-//upload to local storge
-localStorage.setItem('shoes', JSON.stringify(shoes));
-localStorage.setItem('users', JSON.stringify(users));
+// const shoes = [
+//     //shoes database
+//     new shoe('Nike', 'Sport', 'Black', 42, true),
+//     new shoe('Adidas', 'Streetwear', 'Black', 44, true),
+//     new shoe('Blundstone', 'Boots', 'Brown', 39, false),
+//     new shoe('Nike', 'Streetwear', 'White', 44, false)
+// ]
+// //users database
+// const users =
+//     [
+//         new user('miko2003', '123'),
+//         new user('yoad2005', '123')
+//     ]
+// //upload to local storge
+// localStorage.setItem('shoes', JSON.stringify(shoes));
+// localStorage.setItem('users', JSON.stringify(users));
 
 // database API
 // basic functions

@@ -1,13 +1,16 @@
 function fillContainer(container, arr) {
   clearContainer(container);
   for (let item of arr) {
-    container.innerHTML += `<div class="items">${item.id}
-        ${item.brand}
-        ${item.type}
-        ${item.color}
-        ${item.size}
-        ${item.laces}
-        <button type="button" class="deleteShoeBtn" id="${item.id}">Delete</button>
+    container.innerHTML += `
+            <div class="container-shoes"> 
+        <div  id="iditem">id: ${item.id}</div>
+        <div  id="branditem">brand: ${item.brand}</div>
+        <div  id="typeitem">type: ${item.type}</div>
+        <div  id="coloritem">color: ${item.color}</div>
+        <div  id="sizeitem">size: ${item.size}</div>
+        <div  id="lacesitem">laces: ${item.laces}</div>
+        <hr id="break-header">
+        <button type="button" class="deleteShoeBtn " id="${item.id}"> <span>Delete</span></button>
         </div>`;
   }
   container.innerHTML +=
