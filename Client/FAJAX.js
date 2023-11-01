@@ -27,6 +27,7 @@ class FakeXMLHttpRequest{
     }
     send(obj){
                 
+        // post
         if(obj){
             
         }

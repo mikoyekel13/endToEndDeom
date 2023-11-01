@@ -35,7 +35,7 @@
 //         },
 //     ]
 //     //users database
-// const users =    
+// const users =
 //     [
 //     {
 //         id: 1,
@@ -54,28 +54,39 @@
 
 // database API
 // basic functions
- 
-function getWholeArr (str) {
-    switch (str) {
-        case 'shoes':
-            const loaclShoes = JSON.parse(localStorage.getItem('shoes'));
-            return loaclShoes;
-        case 'users':
-            const loaclusers = JSON.parse(localStorage.getItem('users'));
-            return loaclusers;
-    }
-    return false;
-} 
 
-function addShoes(ItemPram) {
-    const checkKeys =['brand','type','color','size','laces' ]
-    currentArr = JSON.parse(localStorage.getItem('shoes'));
-    for (let item of Object.keys(ItemPram)){
-        if(checkKeys.includes(item)){
-            console.log('ok');
+function getWholeArr(str) {
+  switch (str) {
+    case "shoes":
+      const loaclShoes = JSON.parse(localStorage.getItem("shoes"));
+      return loaclShoes;
+    case "users":
+      const loaclusers = JSON.parse(localStorage.getItem("users"));
+      return loaclusers;
+  }
+  return false;
+}
+
+function addItem(url, obj) {
+  switch (url) {
+    case "shoes":
+      const checkKeys = ["brand", "type", "color", "size", "laces"];
+      currentArr = JSON.parse(localStorage.getItem(url));
+      for (let item of Object.keys(obj)) {
+        if (!checkKeys.includes(item)) {
+          return false;
         }
-    }
-    currentArr.push(ItemPram);
-    localStorage.setItem('shoes',JSON.stringify(currentArr));
-    return 200;
+      }
+    case "users":
+      const checkKeysUsers = ["userName", "password"];
+      currentArr = JSON.parse(localStorage.getItem(url));
+      for (let item of Object.keys(obj)) {
+        if (!checkKeysUsers.includes(item)) {
+          return false;
+        }
+      }
+  }
+  currentArr.push(obj);
+  localStorage.setItem(url, JSON.stringify(currentArr));
+  return true;
 }
