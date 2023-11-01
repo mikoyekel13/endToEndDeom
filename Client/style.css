@@ -51,11 +51,11 @@ main {
 }
 .items{
     height: 10vh;
-    border: 1px solid rgb(0, 0, 0);  
     padding: 1vw;
     font-size: 1.2rem;
-    margin: 0.5vw;
-    width: 20vw;
+    margin: auto;
+    width: 100%;
+    
 }
 #filterBar {
     display: flex;
@@ -139,3 +139,29 @@ input[type=text] {
     margin: 3% auto auto auto;
     
   }
+  .deleteShoeBtn{
+    width: 30%;
+    margin-right: 0;
+    margin: auto;
+    padding: 1%;
+    border: none;
+    cursor: pointer;
+    background-color: #e0d9d9;
+    border-radius: 10px;
+  }
+  .deleteShoeBtn:hover{
+    background-color: #b7afaf;
+    transition: all 0.8s;
+
+  }
+.container-shoes{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3%;
+    font-size: 1.3rem;
+    border: 1px solid black;
+}
+#break-header{
+    margin: 10px;
+}
