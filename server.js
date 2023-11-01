@@ -10,15 +10,15 @@ function evalReq (str, obj) {
                 url = str.slice(i + 1, str.length);
                 break;
             } else {
-                return 'wrong method';
+                return ['404', {}];
             }
         }
         currentStr += str[i];
     }
-    if (method == 'GET' && !url.includes('/')) {
-        return ['200', getWholeArr(url)];
+    if (method === 'GET' && !url.includes('/')) {
+        return getWholeArr(url) ? ['200', getWholeArr(url)] : ['404', {}];
 
-    } else if (method == 'POST') {
+    } else if (method === 'POST') {
         
     }
 } 

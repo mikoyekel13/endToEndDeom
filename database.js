@@ -63,7 +63,7 @@ function getWholeArr (str) {
             const loaclusers = JSON.parse(localStorage.getItem('users'));
             return loaclusers;
     }
-    return 404;
+    return false;
 } 
 
 function addShoes(ItemPram) {
