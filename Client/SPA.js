@@ -16,6 +16,7 @@ function showContent(page) {
         const submitbtn = document.querySelector("#submitbtn");
         submitbtn.addEventListener("click", userPostReq);
     } else if (page.id === "appTemp") {
+        const submitbtn = document.querySelector("#filterBtn").addEventListener("click", FilterReq);
         const fajax = new FakeXMLHttpRequest();
         fajax.open("GET", "shoes");
         fajax.onload = () => fillContainer(document.querySelector("main"), fajax.responseText);
@@ -28,6 +29,27 @@ window.onload = showContent(pages.loginPage);
 window.onhashchange = function () {
     showContent(pages[history.state["name"]]);
 };
+
+function FilterReq(){
+    const brand = document.getElementById("brand");
+    const type = document.getElementById("type");
+    const size = document.getElementById("size");
+    const color = document.getElementById("color");
+    const laces = document.getElementById("laces");
+    const looplength = [brand, type, size, color, laces]
+    let url = `shoes/`
+
+    for(let i = 0; i <looplength.length; i++) {
+      if(looplength[i].value !== ""){
+        url += `?${looplength[i].name}=${looplength[i].value}`
+      }
+
+
+      
+    }
+    const fajaxfilter = new FakeXMLHttpRequest();
+    fajaxfilter.open("POST", url);
+}
 
 function userPostReq() {
     const pwrd = document.getElementById("pwrd").value;
