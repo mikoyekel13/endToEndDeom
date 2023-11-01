@@ -58,7 +58,6 @@ function getWholeArr (str) {
     switch (str) {
         case 'shoes':
             const loaclShoes = JSON.parse(localStorage.getItem('shoes'));
-
             return loaclShoes;
         case 'users':
             const loaclusers = JSON.parse(localStorage.getItem('users'));

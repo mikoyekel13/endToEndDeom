@@ -16,7 +16,7 @@ function evalReq (str, obj) {
         currentStr += str[i];
     }
     if (method == 'GET' && !url.includes('/')) {
-        getWholeArr(url);
+        return getWholeArr(url);
 
     } else if (method == 'POST') {
         

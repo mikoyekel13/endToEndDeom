@@ -26,9 +26,11 @@ class FakeXMLHttpRequest{
             return `${this.method} ${this.url}`;
 
         }
-        return `${this.method} ${this.url}`;
+        return evalReq(`${this.method} ${this.url}`);
     }
 
 }
 const fajax = new FakeXMLHttpRequest();
-fajax.send({name: 'adad'})
+fajax.open('GET', 'shoes');
+//
+console.log(fajax.send());
