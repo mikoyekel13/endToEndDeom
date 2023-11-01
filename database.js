@@ -77,6 +77,7 @@ function addItem(url, obj) {
           return false;
         }
       }
+      break;
     case "users":
       const checkKeysUsers = ["userName", "password"];
       currentArr = JSON.parse(localStorage.getItem(url));

@@ -19,6 +19,6 @@ function evalReq (str, obj) {
         return getWholeArr(url) ? ['200', getWholeArr(url)] : ['404', {}];
 
     } else if (method === 'POST') {
-        return addItem(url) ? ['200', 'ok'] : ['404', 'Not Found'];  
+        return addItem(url, obj) ? ['200', 'ok'] : ['404', 'Not Found'];  
     }
 } 

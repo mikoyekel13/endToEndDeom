@@ -15,7 +15,7 @@ class FakeXMLHttpRequest {
 
         }
         if (method === "POST") {
-            this.method = 'GET';
+            this.method = 'POST';
             this.url = url;
         }
         // if(method == "PUT"){
