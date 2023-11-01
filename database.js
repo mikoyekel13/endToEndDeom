@@ -35,7 +35,7 @@ const shoes = [
         },
     ]
     //users database
-const users =    
+const users =
     [
     {
         id: 1,
