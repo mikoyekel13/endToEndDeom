@@ -20,5 +20,6 @@ function evalReq (str, obj) {
 
     } else if (method == 'POST') {
         
+        
     }
 } 

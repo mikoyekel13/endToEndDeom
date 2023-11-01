@@ -26,17 +26,27 @@ class FakeXMLHttpRequest{
         // }
     }
     send(obj){
+                
         if(obj){
             
         }
         this.response = evalReq(`${this.method} ${this.url}`);
         this.responseStatus = this.response[0];
+        try{
+
         if(this.responseStatus === '200'){
             this.onload();
         }
-        this.responseText = this.response[1];
+        else if(this.responseStatus === '404'){
+            throw new Error('404 Not Found');
+        }
+    }
+    catch(e){
+        alert(e.message);
     }
 
+        this.responseText = this.response[1];
+    }
 }
 
 // }
