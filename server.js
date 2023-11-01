@@ -1,5 +1,5 @@
 function evalReq(str, obj) {
-    const accReq = ['GET', 'POST'];
+    const accReq = ['GET', 'POST', 'DELETE'];
     let currentStr = '';
     let method = '';
     let url = '';
@@ -27,6 +27,13 @@ function evalReq(str, obj) {
             } return ['404', 'Not Found'];
         } else if (url === 'shoes') {
             return addItem(url, obj) ? ['200', 'ok'] : ['404', 'Not Found'];
+        }
+    } else if (method === 'DELETE' && url.includes('/')) {
+        let id = '';
+        for (let i = 0; i < url.length; i++) {
+            if (url[i] === '/') {
+                return removeItem(url.slice(0, i), parseInt(url.slice(i + 1, url.length))) ? ['200', 'ok'] : ['404', 'Not Found'];
+            }
         }
     }
 }

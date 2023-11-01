@@ -9,26 +9,13 @@ class FakeXMLHttpRequest {
         this.onload = null;
     }
     open(method, url) {
-        if (method === "GET") {
-            this.method = 'GET';
-            this.url = url;
-
-        }
-        if (method === "POST") {
-            this.method = 'POST';
-            this.url = url;
-        }
-        // if(method == "PUT"){
-
-        // }
-        // if(method == "DELETE"){
-
-        // }
+        this.method = method;
+        this.url = url;
     }
     send(obj) {
         if (this.method === 'POST') {
             this.response = evalReq(`${this.method} ${this.url}`, obj);
-        } else if (this.method === 'GET') {
+        } else if (this.method === 'GET' || this.method == 'DELETE') {
             this.response = evalReq(`${this.method} ${this.url}`);
         }
         this.responseStatus = this.response[0];

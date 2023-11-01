@@ -3,7 +3,7 @@ localStorage.setItem('shoesIdCounter', 1);
 
 class shoe {
     constructor(brand, type, color, size, laces) {
-        this.id = shoe.counter;
+        this.id = parseInt(shoe.counter);
         shoe.count();
         this.brand = brand;
         this.type = type;
@@ -20,7 +20,7 @@ class shoe {
 
 class user {
     constructor(username, password) {
-        this.id = user.counter;
+        this.id = parseInt(user.counter);
         user.count();
         this.username = username;
         this.password = password;
@@ -88,4 +88,15 @@ function addItem(url, obj) {
     currentArr.push(obj);
     localStorage.setItem(url, JSON.stringify(currentArr));
     return true;
+}
+
+function removeItem(url, id) {
+    const currentArr = JSON.parse(localStorage.getItem(url));
+    for (let i = 0; i < currentArr.length; i++) {
+        if (currentArr[i].id === id) {
+            currentArr.splice(i, 1);
+            localStorage.setItem(url, JSON.stringify(currentArr));
+            return true;
+        }
+    } return false;
 }
