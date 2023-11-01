@@ -26,7 +26,6 @@ class FakeXMLHttpRequest {
         // }
     }
     send(obj) {
-
         if (this.method === 'POST') {
             this.response = evalReq(`${this.method} ${this.url}`, obj);
         } else if (this.method === 'GET') {
