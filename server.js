@@ -15,10 +15,24 @@ function evalReq(str, obj) {
         }
         currentStr += str[i];
     }
-    if (method === 'GET' && !url.includes('/')) {
-        return getWholeArr(url) ? ['200', getWholeArr(url)] : ['404', {}];
+    switch (method) {
+        case 'GET':
+            return getMethod(url);
+        case 'POST':
+            return postMethod(url, obj);
+        case 'DELETE':
+            return deleteMethod(url);
+    }
+}
 
-    } else if (method === 'POST' && !url.includes('/')) {
+function getMethod(url) {
+    if (!url.includes('/')) {
+        return getWholeArr(url) ? ['200', getWholeArr(url)] : ['404', {}];
+    }
+}
+
+function postMethod(url, obj) {
+    if (!url.includes('/')) {
         if (url === 'users') {
             for (let item of getWholeArr(url)) {
                 if (item.username === obj.username && item.password === obj.password) {
@@ -28,7 +42,11 @@ function evalReq(str, obj) {
         } else if (url === 'shoes') {
             return addItem(url, obj) ? ['200', 'ok'] : ['404', 'Not Found'];
         }
-    } else if (method === 'DELETE' && url.includes('/')) {
+    }
+}
+
+function deleteMethod(url) {
+    if (url.includes('/')) {
         let id = '';
         for (let i = 0; i < url.length; i++) {
             if (url[i] === '/') {
