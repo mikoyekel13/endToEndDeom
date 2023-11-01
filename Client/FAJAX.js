@@ -3,6 +3,10 @@ class FakeXMLHttpRequest{
         this.method = '';
         this.url = '';
         this.async = true;
+        this.response = [];
+        this.responseStatus = '';
+        this.responseText = '';
+        this.onload = null;
     }
     open(method, url){
         if(method === "GET"){
@@ -23,14 +27,21 @@ class FakeXMLHttpRequest{
     }
     send(obj){
         if(obj){
-            return `${this.method} ${this.url}`;
-
+            
         }
-        return evalReq(`${this.method} ${this.url}`);
+        this.response = evalReq(`${this.method} ${this.url}`);
+        this.responseStatus = this.response[0];
+        if(this.responseStatus === '200'){
+            this.onload();
+        }
+        this.responseText = this.response[1];
     }
 
 }
 const fajax = new FakeXMLHttpRequest();
 fajax.open('GET', 'shoes');
+// fajax.onload = function(){
+// 
+// }
 //
 console.log(fajax.send());
