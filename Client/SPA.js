@@ -15,7 +15,6 @@ function showContent(page) {
   if (page.id === "appTemp") {
     const fajax = new FakeXMLHttpRequest();
     fajax.open("GET", "shoes");
-    // fajax.onload = function(){
     fajax.onload = () => fillContainer(getAppContainer(), fajax.responseText);
     fajax.send(); //
   }
