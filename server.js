@@ -1,4 +1,4 @@
-function evalReq (str, obj) {
+function evalReq(str, obj) {
     const accReq = ['GET', 'POST'];
     let currentStr = '';
     let method = '';
@@ -18,7 +18,15 @@ function evalReq (str, obj) {
     if (method === 'GET' && !url.includes('/')) {
         return getWholeArr(url) ? ['200', getWholeArr(url)] : ['404', {}];
 
-    } else if (method === 'POST') {
-        return addItem(url, obj) ? ['200', 'ok'] : ['404', 'Not Found'];  
+    } else if (method === 'POST' && !url.includes('/')) {
+        if (url === 'users') {
+            for (let item of getWholeArr(url)) {
+                if (item.username === obj.username && item.password === obj.password) {
+                    return ['200', 'ok'];
+                }
+            } return ['404', 'Not Found'];
+        } else if (url === 'shoes') {
+            return addItem(url, obj) ? ['200', 'ok'] : ['404', 'Not Found'];
+        }
     }
-} 
+}

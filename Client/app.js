@@ -1,8 +1,3 @@
-function getAppContainer() {
-  const container = document.querySelector("main");
-  return container;
-}
-
 function fillContainer(container, arr) {
     clearContainer(container); 
   for (let item of arr) {
@@ -30,7 +25,7 @@ function fillAgain() {
   fajax.onload = function () {
     const fajax = new FakeXMLHttpRequest();
     fajax.open("GET", "shoes");
-    fajax.onload = () => fillContainer(getAppContainer(), fajax.responseText);
+    fajax.onload = () => fillContainer(document.querySelector("main"), fajax.responseText);
     fajax.send();
   };
   fajax.send(new shoe('', '', 'blue', '', ''));
