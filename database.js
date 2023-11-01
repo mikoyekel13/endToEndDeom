@@ -1,56 +1,49 @@
-// //whole database
-// const shoes = [
-//     //shoes database
-//         {
-//             id: 1,
-//             brand: 'Nike',
-//             type: 'Sport',
-//             color: 'Black',
-//             size: 42,
-//             laces: true
-//         },
-//         {
-//             id: 2,
-//             brand: 'Adidas',
-//             type: 'Streetwear',
-//             color: 'Black',
-//             size: 44,
-//             laces: true
-//         },
-//         {
-//             id: 3,
-//             brand: 'Blundstone',
-//             type: 'Boots',
-//             color: 'Brown',
-//             size: 39,
-//             laces: false
-//         },
-//         {
-//             id: 4,
-//             brand: 'Nike',
-//             type: 'Streetwear',
-//             color: 'White',
-//             size: 44,
-//             laces: false
-//         },
-//     ]
-//     //users database
-// const users =
-//     [
-//     {
-//         id: 1,
-//         username: 'miko2003',
-//         password: 'Abcd1234'
-//     },
-//     {
-//         id: 2,
-//         username: 'yoad2005',
-//         password: 'Abcd1234'
-//     },
-// ]
-// //upload to local storge
-// localStorage.setItem('shoes', JSON.stringify(shoes));
-// localStorage.setItem('users', JSON.stringify(users));
+class shoe {
+    constructor (brand, type, color, size, laces) {
+        this.id = shoe.counter;
+        shoe.count();
+        this.brand = brand;
+        this.type = type;
+        this.color = color;
+        this.size = size;
+        this.laces = laces;
+    }
+    static counter = 1;
+    static count() {
+        shoe.counter++
+    }
+}
+
+class user {
+    constructor (username, password) {
+        this.id = user.counter;
+        user.count();
+        this.username = username;
+        this.password = password;
+    }
+    static counter = 1;
+    static count() {
+        user.counter++
+    }
+}
+
+//whole database
+const shoes = [
+    //shoes database
+        new shoe('Nike', 'Sport', 'Black', 42, true),
+        new shoe('Adidas', 'Streetwear', 'Black', 44, true),
+        new shoe('Blundstone', 'Boots', 'Brown', 39, false),
+        new shoe('Nike', 'Streetwear', 'White', 44, false)
+    ]
+    //users database
+const users =
+    [
+        new user('miko2003', '123'),
+        new user('yoad2005', '123')
+]
+//upload to local storge
+localStorage.setItem('shoes', JSON.stringify(shoes));
+localStorage.setItem('users', JSON.stringify(users));
 
 // database API
 // basic functions
@@ -70,7 +63,7 @@ function getWholeArr(str) {
 function addItem(url, obj) {
   switch (url) {
     case "shoes":
-      const checkKeys = ["brand", "type", "color", "size", "laces"];
+      const checkKeys = ["brand", "type", "color", "size", "laces", "id"];
       currentArr = JSON.parse(localStorage.getItem(url));
       for (let item of Object.keys(obj)) {
         if (!checkKeys.includes(item)) {
@@ -79,7 +72,7 @@ function addItem(url, obj) {
       }
       break;
     case "users":
-      const checkKeysUsers = ["userName", "password"];
+      const checkKeysUsers = ["userName", "password", "id"];
       currentArr = JSON.parse(localStorage.getItem(url));
       for (let item of Object.keys(obj)) {
         if (!checkKeysUsers.includes(item)) {

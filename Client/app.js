@@ -6,7 +6,7 @@ function getAppContainer() {
 function fillContainer(container, arr) {
     clearContainer(container); 
   for (let item of arr) {
-    container.innerHTML += `<div class="items">${item.brand}
+    container.innerHTML += `<div class="items">${item.id}
         ${item.type}
         ${item.color}
         ${item.size}
@@ -33,5 +33,5 @@ function fillAgain() {
     fajax.onload = () => fillContainer(getAppContainer(), fajax.responseText);
     fajax.send();
   };
-  fajax.send({ brand: "Nike" });
+  fajax.send(new shoe('', '', 'blue', '', ''));
 }
