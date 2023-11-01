@@ -52,8 +52,9 @@
 // localStorage.setItem('shoes', JSON.stringify(shoes));
 // localStorage.setItem('users', JSON.stringify(users));
 
-//database API
-//basic functions
+// database API
+// basic functions
+ 
 function getWholeArr (str) {
     switch (str) {
         case 'shoes':
