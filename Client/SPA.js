@@ -47,7 +47,22 @@ function FilterReq() {
     }
     const fajaxfilter = new FakeXMLHttpRequest();
     fajaxfilter.open("GET", url);
-    fajaxfilter.onload = () => fillContainer(document.querySelector("main"), fajaxfilter.responseText);
+    fajaxfilter.onload = (response) => {
+        this.response = response;
+        this.responseStatus = this.response[0];
+        this.responseText = this.response[1];
+        try {
+            if (this.responseStatus === '200') {
+                fillContainer(document.querySelector("main"), this.responseText);
+            }
+            else if (this.responseStatus === '404') {
+                throw new Error('404 Not Found');
+            }
+        }
+        catch (e) {
+            alert(e.message);
+        }
+    }
     fajaxfilter.send();
 
 }
@@ -57,15 +72,46 @@ function userPostReq() {
     const userName = document.getElementById("userName").value;
     const fajax = new FakeXMLHttpRequest();
     fajax.open("POST", "users");
-    fajax.onload = function () {
-        showContent(pages.appPage);
-    }
+    fajax.onload =
+        (response) => {
+            this.response = response;
+            this.responseStatus = this.response[0];
+            this.responseText = this.response[1];
+            try {
+                if (this.responseStatus === '200') {
+                    showContent(pages.appPage);
+                }
+                else if (this.responseStatus === '404') {
+                    throw new Error('404 Not Found');
+                }
+            }
+            catch (e) {
+                alert(e.message);
+            }
+        }
     fajax.send({ username: `${userName}`, password: `${pwrd}` });
 }
 
 function getAllShoes() {
     const fajax = new FakeXMLHttpRequest();
     fajax.open("GET", "shoes");
-    fajax.onload = () => fillContainer(document.querySelector("main"), fajax.responseText);
+    fajax.onload =
+        (response) => {
+            this.response = response;
+            this.responseStatus = this.response[0];
+            this.responseText = this.response[1];
+            try {
+                if (this.responseStatus === '200') {
+                    fillContainer(document.querySelector("main"), this.responseText);
+                }
+                else if (this.responseStatus === '404') {
+                    throw new Error('404 Not Found');
+                }
+            }
+            catch (e) {
+                alert(e.message);
+            }
+        }
+
     fajax.send();
 }

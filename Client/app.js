@@ -32,7 +32,7 @@ function fillAgain() {
   const addItemform = document.getElementById("addItemform");
   const submitaddnew = document.getElementById("submitaddnew");
   const cancelBtn = document.getElementById("Cancelbtnaddnew")
-  cancelBtn.addEventListener("click",function() {
+  cancelBtn.addEventListener("click", function () {
     addItemform.style.display = "none";
   });
   addItemform.style.display = "flex";
@@ -47,14 +47,41 @@ function fillAgain() {
     const laces = document.getElementById("nLaces");
     const postFajax = new FakeXMLHttpRequest();
     postFajax.open("POST", "shoes");
-    postFajax.onload = function () {
-      submitaddnew.removeEventListener("click", inputcheckNull);
-      const fajax = new FakeXMLHttpRequest();
-      fajax.open("GET", "shoes");
-      fajax.onload = () =>
-        fillContainer(document.querySelector("main"), fajax.responseText);
-      fajax.send();
-    };
+    postFajax.onload = (response) => {
+      this.response = response;
+      this.responseStatus = this.response[0];
+      this.responseText = this.response[1];
+      try {
+        if (this.responseStatus === '200') {
+          submitaddnew.removeEventListener("click", inputcheckNull);
+          const fajax = new FakeXMLHttpRequest();
+          fajax.open("GET", "shoes");
+          fajax.onload = (response) => {
+            this.response = response;
+            this.responseStatus = this.response[0];
+            this.responseText = this.response[1];
+            try {
+              if (this.responseStatus === '200') {
+                fillContainer(document.querySelector("main"), this.responseText);
+              }
+              else if (this.responseStatus === '404') {
+                throw new Error('404 Not Found');
+              }
+            }
+            catch (e) {
+              alert(e.message);
+            }
+          }
+          fajax.send();
+        }
+        else if (this.responseStatus === '404') {
+          throw new Error('404 Not Found');
+        }
+      }
+      catch (e) {
+        alert(e.message);
+      }
+    }
     if (
       brand.value !== '' &&
       type.value !== '' &&
@@ -71,14 +98,42 @@ function fillAgain() {
 }
 
 function deleteShoe() {
-    const id = this.id;
-    const fajax = new FakeXMLHttpRequest();
-    fajax.open("DELETE", `shoes/${this.id}`);
-    fajax.onload = function () {
+  const id = this.id;
+  const fajax = new FakeXMLHttpRequest();
+  fajax.open("DELETE", `shoes/${this.id}`);
+  fajax.onload = (response) => {
+    this.response = response;
+    this.responseStatus = this.response[0];
+    this.responseText = this.response[1];
+    try {
+      if (this.responseStatus === '200') {
         const fajax = new FakeXMLHttpRequest();
         fajax.open("GET", "shoes");
-        fajax.onload = () => fillContainer(document.querySelector("main"), fajax.responseText);
+        fajax.onload = (response) => {
+          this.response = response;
+          this.responseStatus = this.response[0];
+          this.responseText = this.response[1];
+          try {
+            if (this.responseStatus === '200') {
+              fillContainer(document.querySelector("main"), this.responseText);
+            }
+            else if (this.responseStatus === '404') {
+              throw new Error('404 Not Found');
+            }
+          }
+          catch (e) {
+            alert(e.message);
+          }
+        }
         fajax.send();
+      }
+      else if (this.responseStatus === '404') {
+        throw new Error('404 Not Found');
+      }
     }
-    fajax.send();
+    catch (e) {
+      alert(e.message);
+    }
+  }
+  fajax.send();
 }
