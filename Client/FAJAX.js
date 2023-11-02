@@ -15,24 +15,40 @@ class FakeXMLHttpRequest {
     send(obj) {
         if (this.method === 'POST') {
             console.log(`${this.method} ${this.url}`, obj);
-           this.response = connection(`${this.method} ${this.url}`, obj);
+            connection(`${this.method} ${this.url}`, (response) => {
+                this.response = response;
+                this.responseStatus = this.response[0];
+                this.responseText = this.response[1];
+                try {
+                    if (this.responseStatus === '200') {
+                        this.onload();
+                    }
+                    else if (this.responseStatus === '404') {
+                        throw new Error('404 Not Found');
+                    }
+                }
+                catch (e) {
+                    alert(e.message);
+                }
+            }, obj);
         } else if (this.method === 'GET' || this.method == 'DELETE') {
             console.log(`${this.method} ${this.url}`);
-            this.response = connection(`${this.method} ${this.url}`);
+            connection(`${this.method} ${this.url}`, (response) => {
+                this.response = response;
+                this.responseStatus = this.response[0];
+                this.responseText = this.response[1];
+                try {
+                    if (this.responseStatus === '200') {
+                        this.onload();
+                    }
+                    else if (this.responseStatus === '404') {
+                        throw new Error('404 Not Found');
+                    }
+                }
+                catch (e) {
+                    alert(e.message);
+                }
+            });
         }
-        this.responseStatus = this.response[0];
-        this.responseText = this.response[1];
-        try {
-            if (this.responseStatus === '200') {
-                this.onload();
-            }
-            else if (this.responseStatus === '404') {
-                throw new Error('404 Not Found');
-            }
-        }
-        catch (e) {
-            alert(e.message);
-        }
-
     }
 }
