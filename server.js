@@ -28,19 +28,18 @@ function evalReq(str, obj) {
 function getMethod(url) {
     if (!url.includes('/')) {
         return getWholeArr(url) ? ['200', getWholeArr(url)] : ['404', {}];
-    } else if (url.includes('/') && url == shoes){
+    } else if (url.includes('/') && url.includes('shoes')){
         return getFiltered(url);
     }
 }
 
 function getFiltered(url) {
     let data; let specific;
-    const currentKey = '';
+    let currentKey = '';
     const keys = [];
-    const currentValue = '';
+    let currentValue = '';
     const values = [];
-    const lastBreak = '';
-    const currentArr = getWholeArr(url);
+    let lastBreak = '';
     let returnedArr = [];
     for (let i = 0; i < url.length; i++) {
         if (url[i] === '/') {
@@ -49,6 +48,7 @@ function getFiltered(url) {
             break;
         }
     }
+    const currentArr = getWholeArr(data);
     for (let i = 0; i < specific.length; i++) {
         if (specific[i] === '?') {
             if (currentKey) {
@@ -66,14 +66,22 @@ function getFiltered(url) {
             currentValue += specific[i];
         }
     }
+    keys.push(currentKey);
+    values.push(currentValue);
     for (let item of currentArr) {
-        for (let key of keys) {
-            if (values.includes(item[key])) {
-                returnedArr.push(item);
+        let check = false;
+        for (let i = 0; i < keys.length; i++) {
+            //console.log(item[keys[i]], values[i]);
+            if (item[keys[i]].toString() === values[i]) {
+                check = true;
+            } else {
+                check = false;
+                break;
             }
         }
+        if (check) {returnedArr.push(item)};
     }
-    return returnedArr;
+    return returnedArr.length > 0 ? ['200', returnedArr] : ['404', 'Not Found'];
 }
 
     function postMethod(url, obj) {

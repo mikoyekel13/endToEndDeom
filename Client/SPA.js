@@ -16,11 +16,9 @@ function showContent(page) {
         const submitbtn = document.querySelector("#submitbtn");
         submitbtn.addEventListener("click", userPostReq);
     } else if (page.id === "appTemp") {
-        const submitbtn = document.querySelector("#filterBtn").addEventListener("click", FilterReq);
-        const fajax = new FakeXMLHttpRequest();
-        fajax.open("GET", "shoes");
-        fajax.onload = () => fillContainer(document.querySelector("main"), fajax.responseText);
-        fajax.send(); //
+        document.querySelector("#filterBtn").addEventListener("click", FilterReq);
+        document.querySelector("#getBtn").addEventListener("click", getAllShoes);
+        getAllShoes();
     }
 }
 
@@ -30,7 +28,7 @@ window.onhashchange = function () {
     showContent(pages[history.state["name"]]);
 };
 
-function FilterReq(){
+function FilterReq() {
     const brand = document.getElementById("brand");
     const type = document.getElementById("type");
     const size = document.getElementById("size");
@@ -39,16 +37,19 @@ function FilterReq(){
     const looplength = [brand, type, size, color, laces]
     let url = `shoes/`
 
-    for(let i = 0; i <looplength.length; i++) {
-      if(looplength[i].value !== ""){
-        url += `?${looplength[i].name}=${looplength[i].value}`
-      }
+    for (let i = 0; i < looplength.length; i++) {
+        if (looplength[i].value !== "") {
+            url += `?${looplength[i].name}=${looplength[i].value}`
+        }
 
 
-      
+
     }
     const fajaxfilter = new FakeXMLHttpRequest();
-    fajaxfilter.open("POST", url);
+    fajaxfilter.open("GET", url);
+    fajaxfilter.onload = () => fillContainer(document.querySelector("main"), fajaxfilter.responseText);
+    fajaxfilter.send();
+
 }
 
 function userPostReq() {
@@ -56,8 +57,15 @@ function userPostReq() {
     const userName = document.getElementById("userName").value;
     const fajax = new FakeXMLHttpRequest();
     fajax.open("POST", "users");
-    fajax.onload = function() {
+    fajax.onload = function () {
         showContent(pages.appPage);
     }
-    fajax.send({username: `${userName}`, password: `${pwrd}`});
+    fajax.send({ username: `${userName}`, password: `${pwrd}` });
+}
+
+function getAllShoes() {
+    const fajax = new FakeXMLHttpRequest();
+    fajax.open("GET", "shoes");
+    fajax.onload = () => fillContainer(document.querySelector("main"), fajax.responseText);
+    fajax.send();
 }
