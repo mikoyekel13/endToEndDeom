@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -23,7 +26,7 @@
                 </div>
                 <p id="validateLogin"></p>
                 <div class="pad">
-                    <button type="button" class="sub1" id="submitbtn">submit</button>
+                    <button type="button" class="sub1 stylesubmitbtn" id="submitbtn">submit</button>
                 </div>
             </div>
         </form>
@@ -34,15 +37,15 @@
         <nav>
             <form id="filterBar">
                 <label class="itemsfilter" for="brand">Brand:</label>
-                <input class="itemsfilter"  type="text" id="brand" name="brand">
+                <input class="itemsfilter inputfilter"  type="text" id="brand" name="brand">
                 <label class="itemsfilter" for="type">Type:</label>
-                <input class="itemsfilter" type="text" id="type" name="type">
+                <input class="itemsfilter inputfilter" type="text" id="type" name="type">
                 <label class="itemsfilter" for="size">Size:</label>
-                <input class="itemsfilter" type="text" id="size" name="size">
+                <input class="itemsfilter inputfilter" type="text" id="size" name="size">
                 <label class="itemsfilter" for="color">Color:</label>
-                <input class="itemsfilter" type="text" id="color" name="color">
+                <input class="itemsfilter inputfilter" type="text" id="color" name="color">
                 <label class="itemsfilter" for="laces">Laces:</label>
-                <input class="itemsfilter" type="text" id="laces" name="laces">
+                <input class="itemsfilter inputfilter" type="text" id="laces" name="laces">
                 <button class="itemsfilter" type="button" id="filterBtn">Filter</button>
                 <button class="itemsfilter" type="button" id="getBtn">Get All</button>
             </form>
@@ -74,4 +77,5 @@
 </body>
 
 </html>
+
 
