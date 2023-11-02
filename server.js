@@ -28,30 +28,75 @@ function evalReq(str, obj) {
 function getMethod(url) {
     if (!url.includes('/')) {
         return getWholeArr(url) ? ['200', getWholeArr(url)] : ['404', {}];
+    } else if (url.includes('/') && url == shoes){
+        return getFiltered(url);
     }
 }
 
-function postMethod(url, obj) {
-    if (!url.includes('/')) {
-        if (url === 'users') {
-            for (let item of getWholeArr(url)) {
-                if (item.username === obj.username && item.password === obj.password) {
-                    return ['200', 'ok'];
-                }
-            } return ['404', 'Not Found'];
-        } else if (url === 'shoes') {
-            return addItem(url, obj) ? ['200', 'ok'] : ['404', 'Not Found'];
+function getFiltered(url) {
+    let data; let specific;
+    const currentKey = '';
+    const keys = [];
+    const currentValue = '';
+    const values = [];
+    const lastBreak = '';
+    const currentArr = getWholeArr(url);
+    let returnedArr = [];
+    for (let i = 0; i < url.length; i++) {
+        if (url[i] === '/') {
+            data = url.slice(0, i);
+            specific = url.slice(i + 1, url.length);
+            break;
         }
     }
-}
-
-function deleteMethod(url) {
-    if (url.includes('/')) {
-        let id = '';
-        for (let i = 0; i < url.length; i++) {
-            if (url[i] === '/') {
-                return removeItem(url.slice(0, i), parseInt(url.slice(i + 1, url.length))) ? ['200', 'ok'] : ['404', 'Not Found'];
+    for (let i = 0; i < specific.length; i++) {
+        if (specific[i] === '?') {
+            if (currentKey) {
+                keys.push(currentKey);
+                values.push(currentValue);
+            }
+            lastBreak = '?';
+            currentKey = '';
+            currentValue = '';
+        } else if (specific[i] === '=') {
+            lastBreak = '=';
+        } else if (specific[i] !== '=' && specific[i] !== '?' && lastBreak === '?') {
+            currentKey += specific[i];
+        } else if (specific[i] !== '=' && specific[i] !== '?' && lastBreak === '=') {
+            currentValue += specific[i];
+        }
+    }
+    for (let item of currentArr) {
+        for (let key of keys) {
+            if (values.includes(item[key])) {
+                returnedArr.push(item);
             }
         }
     }
+    return returnedArr;
 }
+
+    function postMethod(url, obj) {
+        if (!url.includes('/')) {
+            if (url === 'users') {
+                for (let item of getWholeArr(url)) {
+                    if (item.username === obj.username && item.password === obj.password) {
+                        return ['200', 'ok'];
+                    }
+                } return ['404', 'Not Found'];
+            } else if (url === 'shoes') {
+                return addItem(url, obj) ? ['200', 'ok'] : ['404', 'Not Found'];
+            }
+        }
+    }
+
+    function deleteMethod(url) {
+        if (url.includes('/')) {
+            let id = '';
+            for (let i = 0; i < url.length; i++) {
+                if (url[i] === '/') {
+                    return removeItem(url.slice(0, i), parseInt(url.slice(i + 1, url.length))) ? ['200', 'ok'] : ['404', 'Not Found'];
+                }
+            }
+        }
+    }
