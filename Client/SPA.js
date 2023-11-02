@@ -47,6 +47,7 @@ function FilterReq(){
 
       
     }
+    console.log(url);
     const fajaxfilter = new FakeXMLHttpRequest();
     fajaxfilter.open("POST", url);
 }
