@@ -31,7 +31,12 @@ function fillAgain() {
   let currentShoe = {};
   const addItemform = document.getElementById("addItemform");
   const submitaddnew = document.getElementById("submitaddnew");
+  const cancelBtn = document.getElementById("Cancelbtnaddnew")
+  cancelBtn.addEventListener("click",function() {
+    addItemform.style.display = "none";
+  });
   addItemform.style.display = "flex";
+
   submitaddnew.addEventListener("click", inputcheckNull);
 
   function inputcheckNull() {
