@@ -34,7 +34,7 @@
   transition: all 1s;
 }
 
- #login input, #login labal {
+ #login input, #login label {
     margin: 10px;
     display: block;
     margin-right: auto;
@@ -112,7 +112,6 @@ input[type=text] {
     text-align: center;
     text-decoration: none;
     transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    -webkit-user-select: none;
     width: 80%;
     will-change: transform;
   }
@@ -213,6 +212,7 @@ input[type=text] {
     padding: 13px 50px 13px;
   }
 }
+
 nav{
   display: flex;
   justify-content: center;

@@ -71,7 +71,6 @@ function getFiltered(url) {
     for (let item of currentArr) {
         let check = false;
         for (let i = 0; i < keys.length; i++) {
-            //console.log(item[keys[i]], values[i]);
             if (item[keys[i]].toString() === values[i]) {
                 check = true;
             } else {

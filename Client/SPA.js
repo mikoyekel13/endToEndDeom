@@ -45,7 +45,6 @@ function FilterReq() {
 
 
     }
-    console.log(url);
     const fajaxfilter = new FakeXMLHttpRequest();
     fajaxfilter.open("GET", url);
     fajaxfilter.onload = () => fillContainer(document.querySelector("main"), fajaxfilter.responseText);
